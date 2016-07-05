@@ -18,7 +18,8 @@ public class DBCPDataSource {
 	private static DBCPDataSource datasource;
 	private BasicDataSource basicDS;
 
-	private DBCPDataSource() throws IOException, SQLException, PropertyVetoException {
+	private DBCPDataSource() throws IOException, SQLException,
+			PropertyVetoException {
 		basicDS = new BasicDataSource();
 		basicDS.setDriverClassName(Constants.DRIVER);
 		basicDS.setUsername(Constants.USERNAME);
@@ -32,7 +33,8 @@ public class DBCPDataSource {
 
 	}
 
-	public static DBCPDataSource getInstance() throws IOException, SQLException, PropertyVetoException {
+	public static DBCPDataSource getInstance() throws IOException,
+			SQLException, PropertyVetoException {
 		if (datasource == null) {
 			datasource = new DBCPDataSource();
 			return datasource;

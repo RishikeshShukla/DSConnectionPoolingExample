@@ -16,18 +16,15 @@ public class TestDBCP {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		long startTime = System.currentTimeMillis();
-		
-		
+				
 		try {
 			DBCPDataSource dbcpDS = DBCPDataSource.getInstance();
-
 			conn = dbcpDS.getConnection();
 			stmt = conn.prepareStatement(Constants.SELECT_QUERY);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				System.out.println("Trackid id: " + rs.getString("track_Id"));
-			}
-			
+			}			
 			long endTime = System.currentTimeMillis();
 			
 			System.out.println("Time taken : "+ (endTime-startTime)  + "ms");
