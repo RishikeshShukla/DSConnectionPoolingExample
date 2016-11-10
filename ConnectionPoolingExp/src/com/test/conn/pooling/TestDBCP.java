@@ -1,13 +1,11 @@
 package com.test.conn.pooling;
 
-import java.beans.PropertyVetoException;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.learn.dbcp.conn.pool.DBCPDataSource;
+import com.learn.dbcp.conn.pool.DBCPConnProvider;
 
 public class TestDBCP {
 
@@ -18,8 +16,8 @@ public class TestDBCP {
 		long startTime = System.currentTimeMillis();
 				
 		try {
-			DBCPDataSource dbcpDS = DBCPDataSource.getInstance();
-			conn = dbcpDS.getConnection();
+			
+			conn = new DBCPConnProvider().getConnection();
 			stmt = conn.prepareStatement(Constants.SELECT_QUERY);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -29,7 +27,7 @@ public class TestDBCP {
 			
 			System.out.println("Time taken : "+ (endTime-startTime)  + "ms");
 
-		} catch (SQLException | IOException | PropertyVetoException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			if (stmt != null) {
