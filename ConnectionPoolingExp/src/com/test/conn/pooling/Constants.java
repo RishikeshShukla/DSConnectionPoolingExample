@@ -8,4 +8,6 @@ public interface Constants {
 	String PASSWORD = "root";
 	
 	String SELECT_QUERY = "select  * from issue";
+	
+	String MERGE_TEST = "Merge Test String";
 }
